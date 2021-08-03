@@ -18,92 +18,47 @@
 ***********************************************************************************************************************/
 
 /***********************************************************************************************************************
-* File Name    : Config_CMT0.c
-* Version      : 2.0.2
+* File Name    : Config_SCI12.h
+* Version      : 1.9.2
 * Device(s)    : R5F571MFCxFP
-* Description  : This file implements device driver for Config_CMT0.
+* Description  : This file implements device driver for Config_SCI12.
 * Creation Date: 2021-08-01
 ***********************************************************************************************************************/
 
-/***********************************************************************************************************************
-Pragma directive
-***********************************************************************************************************************/
-/* Start user code for pragma. Do not edit comment generated here */
-/* End user code. Do not edit comment generated here */
+#ifndef CFG_Config_SCI12_H
+#define CFG_Config_SCI12_H
 
 /***********************************************************************************************************************
 Includes
 ***********************************************************************************************************************/
-#include "r_cg_macrodriver.h"
-#include "Config_CMT0.h"
-/* Start user code for include. Do not edit comment generated here */
+#include "r_cg_sci.h"
+
+/***********************************************************************************************************************
+Macro definitions (Register bit)
+***********************************************************************************************************************/
+
+/***********************************************************************************************************************
+Macro definitions
+***********************************************************************************************************************/
+
+/***********************************************************************************************************************
+Typedef definitions
+***********************************************************************************************************************/
+
+/***********************************************************************************************************************
+Global functions
+***********************************************************************************************************************/
+void R_Config_SCI12_Create(void);
+void R_Config_SCI12_Create_UserInit(void);
+void R_Config_SCI12_Start(void);
+void R_Config_SCI12_Stop(void);
+void R_Config_SCI12_IIC_Master_Send(uint8_t adr, uint8_t * const tx_buf, uint16_t tx_num);
+void R_Config_SCI12_IIC_Master_Receive(uint8_t adr, uint8_t * const rx_buf, uint16_t rx_num);
+void R_Config_SCI12_IIC_StartCondition(void);
+void R_Config_SCI12_IIC_StopCondition(void);
+void r_Config_SCI12_transmitend_interrupt(void);
+static void r_Config_SCI12_callback_transmitend(void);
+static void r_Config_SCI12_callback_receiveend(void);
+/* Start user code for function. Do not edit comment generated here */
 /* End user code. Do not edit comment generated here */
-#include "r_cg_userdefine.h"
-
-/***********************************************************************************************************************
-Global variables and functions
-***********************************************************************************************************************/
-/* Start user code for global. Do not edit comment generated here */
-/* End user code. Do not edit comment generated here */
-
-/***********************************************************************************************************************
-* Function Name: R_Config_CMT0_Create
-* Description  : This function initializes the CMT0 channel
-* Arguments    : None
-* Return Value : None
-***********************************************************************************************************************/
-
-void R_Config_CMT0_Create(void)
-{
-    /* Disable CMI0 interrupt */
-    IEN(CMT0,CMI0) = 0U;
-    
-    /* Cancel CMT stop state in LPC */
-    MSTP(CMT0) = 0U;
-    
-    /* Set control registers */  
-    CMT0.CMCR.WORD = _0000_CMT_CMCR_CLOCK_PCLK8 | _0040_CMT_CMCR_CMIE_ENABLE | _0080_CMT_CMCR_DEFAULT;
-    
-    /* Set compare match register */
-    CMT0.CMCOR = _1D4B_CMT0_CMCOR_VALUE;
-    
-    /* Set CMI0 priority level */
-    IPR(CMT0,CMI0) = _0F_CMT_PRIORITY_LEVEL15;
-    
-    R_Config_CMT0_Create_UserInit();
-}
-
-/***********************************************************************************************************************
-* Function Name: R_Config_CMT0_Start
-* Description  : This function starts the CMT0 channel counter
-* Arguments    : None
-* Return Value : None
-***********************************************************************************************************************/
-
-void R_Config_CMT0_Start(void)
-{
-    /* Enable CMI0 interrupt in ICU */
-    IEN(CMT0,CMI0) = 1U;
-    
-    /* Start CMT0 count */
-    CMT.CMSTR0.BIT.STR0 = 1U;
-}
-
-/***********************************************************************************************************************
-* Function Name: R_Config_CMT0_Stop
-* Description  : This function stop the CMT0 channel counter
-* Arguments    : None
-* Return Value : None
-***********************************************************************************************************************/
-
-void R_Config_CMT0_Stop(void)
-{
-    /* Stop CMT0 count */
-    CMT.CMSTR0.BIT.STR0 = 0U;
-    
-    /* Disable CMI0 interrupt in ICU */
-    IEN(CMT0,CMI0) = 0U;
-}
-
-/* Start user code for adding. Do not edit comment generated here */
-/* End user code. Do not edit comment generated here */
+#endif

@@ -22,7 +22,7 @@
 * Version      : 2.0.2
 * Device(s)    : R5F571MFCxFP
 * Description  : This file implements device driver for Config_CMT0.
-* Creation Date: 2021-07-28
+* Creation Date: 2021-08-01
 ***********************************************************************************************************************/
 
 /***********************************************************************************************************************
@@ -45,7 +45,7 @@ Includes
 Global variables and functions
 ***********************************************************************************************************************/
 /* Start user code for global. Do not edit comment generated here */
-int cnt = 0;
+int cnt = 0 , cnt_lcd = 0;
 /* End user code. Do not edit comment generated here */
 
 /***********************************************************************************************************************
@@ -80,6 +80,7 @@ static void r_Config_CMT0_cmi0_interrupt(void)
    // __setpsw_i();
     printf("%d\n\r",cnt);
     cnt++;
+    cnt_lcd++;
     /* End user code. Do not edit comment generated here */
 }
 

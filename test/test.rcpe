@@ -34,6 +34,7 @@
           <Path>src\smc_gen\general\r_smc_interrupt.h</Path>
           <Path>src\smc_gen\general\r_cg_sci.h</Path>
           <Path>src\smc_gen\general\r_cg_scif.h</Path>
+          <Path>src\smc_gen\general\r_cg_riic.h</Path>
         </Category>
         <Category Name="r_bsp">
           <Path>src\smc_gen\r_bsp\platform.h</Path>
@@ -123,8 +124,15 @@
           <Path>src\smc_gen\Config_SCI1\Config_SCI1.h</Path>
           <Path>src\smc_gen\Config_SCI1\Config_SCI1_user.c</Path>
         </Category>
+        <Category Name="Config_SCI12">
+          <Path>src\smc_gen\Config_SCI12\Config_SCI12.c</Path>
+          <Path>src\smc_gen\Config_SCI12\Config_SCI12.h</Path>
+          <Path>src\smc_gen\Config_SCI12\Config_SCI12_user.c</Path>
+        </Category>
       </Category>
       <Path>test.h</Path>
+      <Path>LCD.h</Path>
+      <Path>LCD.c</Path>
     </Files>
     <DebugOptions>
       <DebugTool>Simulator</DebugTool>
@@ -142,6 +150,7 @@
           <Option>-fpu</Option>
           <Option>-dbl_size=8</Option>
           <Option>-lang=c99</Option>
+          <Option>-include=src\smc_gen\Config_SCI12</Option>
           <Option>-include=.</Option>
           <Option>-include=src\smc_gen\Config_SCI1</Option>
           <Option>-include=src\smc_gen\r_pincfg</Option>
@@ -225,8 +234,12 @@
           <Path>DefaultBuild\Pin.obj</Path>
           <Path>DefaultBuild\Config_SCI1.obj</Path>
           <Path>DefaultBuild\Config_SCI1_user.obj</Path>
+          <Path>DefaultBuild\Config_SCI12.obj</Path>
+          <Path>DefaultBuild\Config_SCI12_user.obj</Path>
+          <Path>DefaultBuild\LCD.obj</Path>
         </LinkOrder>
         <CommonOptions>
+          <IncludePathForC>src\smc_gen\Config_SCI12</IncludePathForC>
           <IncludePathForC>.</IncludePathForC>
           <IncludePathForC>src\smc_gen\Config_SCI1</IncludePathForC>
           <IncludePathForC>src\smc_gen\r_pincfg</IncludePathForC>
