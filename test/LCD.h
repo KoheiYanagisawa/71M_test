@@ -25,9 +25,18 @@
 #define	I2C_LCD_SEND	R_Config_SCI12_IIC_Master_Send(LCD_SLAVEADDRESS, word, 2)      //データ送信用
 #define	I2C_LCD_CMD	R_Config_SCI12_IIC_Master_Send(LCD_SLAVEADDRESS, Command, 2)   //コマンド送信用
 
-//グローバル変数
+//グローバル変数-----------------------------------------------------------------------------------------------
 
 extern int cnt_lcd;
+
+//プロトタイプ宣言
+
+//LCD関係
+
+void lcd_CMD(unsigned char cmd);
+void lcd_DATE(unsigned char date);
+void wait_lcd(int time);
+void inti_lcd(void);
 
 
 #endif
