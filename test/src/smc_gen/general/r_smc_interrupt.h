@@ -22,7 +22,7 @@
 * Version      : 1.2.2
 * Device(s)    : R5F571MFCxFP
 * Description  : This file implements interrupt setting.
-* Creation Date: 2021-08-01
+* Creation Date: 2021-08-14
 ***********************************************************************************************************************/
 
 #ifndef SMC_INTERRUPT_H
@@ -66,7 +66,7 @@ Macro definitions
 #define ICU_FCU_FRDYI_PRIORITY                     (_0F_ICU_PRIORITY_LEVEL15)
 #define ICU_ICU_SWINT2_PRIORITY                    (_01_ICU_PRIORITY_LEVEL1)
 #define ICU_ICU_SWINT_PRIORITY                     (_01_ICU_PRIORITY_LEVEL1)
-#define ICU_CMT0_CMI0_PRIORITY                     (_0F_ICU_PRIORITY_LEVEL15)
+#define ICU_CMT0_CMI0_PRIORITY                     (_06_ICU_PRIORITY_LEVEL6)
 #define ICU_CMT1_CMI1_PRIORITY                     (_0F_ICU_PRIORITY_LEVEL15)
 #define ICU_CMTW0_CMWI0_PRIORITY                   (_0F_ICU_PRIORITY_LEVEL15)
 #define ICU_CMTW1_CMWI1_PRIORITY                   (_0F_ICU_PRIORITY_LEVEL15)
@@ -139,14 +139,14 @@ Macro definitions
 #define ICU_SCIFA10_RXIF10_PRIORITY                (_0F_ICU_PRIORITY_LEVEL15)
 #define ICU_SCIFA10_TXIF10_PRIORITY                (_0F_ICU_PRIORITY_LEVEL15)
 #define ICU_ICU_GROUPBE0_PRIORITY                  (_0F_ICU_PRIORITY_LEVEL15)
-#define ICU_ICU_GROUPBL0_PRIORITY                  (_0F_ICU_PRIORITY_LEVEL15)
+#define ICU_ICU_GROUPBL0_PRIORITY                  (_09_ICU_PRIORITY_LEVEL9)
 #define ICU_ICU_GROUPBL1_PRIORITY                  (_0F_ICU_PRIORITY_LEVEL15)
 #define ICU_ICU_GROUPAL0_PRIORITY                  (_0F_ICU_PRIORITY_LEVEL15)
 #define ICU_ICU_GROUPAL1_PRIORITY                  (_0F_ICU_PRIORITY_LEVEL15)
 #define ICU_SCIFA11_RXIF11_PRIORITY                (_0F_ICU_PRIORITY_LEVEL15)
 #define ICU_SCIFA11_TXIF11_PRIORITY                (_0F_ICU_PRIORITY_LEVEL15)
-#define ICU_SCI12_RXI12_PRIORITY                   (_0F_ICU_PRIORITY_LEVEL15)
-#define ICU_SCI12_TXI12_PRIORITY                   (_0F_ICU_PRIORITY_LEVEL15)
+#define ICU_SCI12_RXI12_PRIORITY                   (_07_ICU_PRIORITY_LEVEL7)
+#define ICU_SCI12_TXI12_PRIORITY                   (_08_ICU_PRIORITY_LEVEL8)
 #define ICU_DMAC_DMAC0I_PRIORITY                   (_0F_ICU_PRIORITY_LEVEL15)
 #define ICU_DMAC_DMAC1I_PRIORITY                   (_0F_ICU_PRIORITY_LEVEL15)
 #define ICU_DMAC_DMAC2I_PRIORITY                   (_0F_ICU_PRIORITY_LEVEL15)

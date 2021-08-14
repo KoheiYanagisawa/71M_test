@@ -132,6 +132,7 @@
       </Category>
       <Path>test.h</Path>
       <Path>LCD.h</Path>
+      <Path>Timer.h</Path>
       <Path>LCD.c</Path>
     </Files>
     <DebugOptions>
@@ -167,7 +168,6 @@
           <Option>-output=obj=%BuildModeName%\%FileLeaf%.obj</Option>
           <Option>-debug</Option>
           <Option>-g_line</Option>
-          <Option>-optimize=0</Option>
           <Option>-nologo</Option>
         </CompileOptions>
         <AssembleOptions>

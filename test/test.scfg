@@ -268,7 +268,7 @@
 <Item currentVect="23" id="FCU_FRDYI" priority="15" usedState="未使用"/>
 <Item currentVect="26" id="ICU_SWINT2" priority="1" usedState="使用中"/>
 <Item currentVect="27" id="ICU_SWINT" priority="1" usedState="使用中"/>
-<Item currentVect="28" id="CMT0_CMI0" priority="15" usedState="使用中"/>
+<Item currentVect="28" id="CMT0_CMI0" priority="6" usedState="使用中"/>
 <Item currentVect="29" id="CMT1_CMI1" priority="15" usedState="未使用"/>
 <Item currentVect="30" id="CMTW0_CMWI0" priority="15" usedState="未使用"/>
 <Item currentVect="31" id="CMTW1_CMWI1" priority="15" usedState="未使用"/>
@@ -341,14 +341,14 @@
 <Item currentVect="104" id="SCIFA10_RXIF10" priority="15" usedState="未使用"/>
 <Item currentVect="105" id="SCIFA10_TXIF10" priority="15" usedState="未使用"/>
 <Item currentVect="106" groupchild="&lt;br&gt;1-ERS0&lt;br&gt;2-ERS1&lt;br&gt;3-ERS2" id="BE0" priority="15" usedState="未使用"/>
-<Item currentVect="110" groupchild="&lt;br&gt;1-TEI0&lt;br&gt;2-ERI0&lt;br&gt;3-TEI1&lt;br&gt;4-ERI1&lt;br&gt;5-TEI2&lt;br&gt;6-ERI2&lt;br&gt;7-TEI3&lt;br&gt;8-ERI3&lt;br&gt;9-TEI4&lt;br&gt;10-ERI4&lt;br&gt;11-TEI5&lt;br&gt;12-ERI5&lt;br&gt;13-TEI6&lt;br&gt;14-ERI6&lt;br&gt;15-TEI7&lt;br&gt;16-ERI7&lt;br&gt;17-TEI12&lt;br&gt;18-ERI12&lt;br&gt;19-SCIX0&lt;br&gt;20-SCIX1&lt;br&gt;21-SCIX2&lt;br&gt;22-SCIX3&lt;br&gt;23-QSPSSLI&lt;br&gt;24-FERRI&lt;br&gt;25-MENDI&lt;br&gt;26-OVFI&lt;br&gt;27-DOPCI&lt;br&gt;28-PCFEI&lt;br&gt;29-PCERI" id="BL0" priority="15" usedState="使用中"/>
+<Item currentVect="110" groupchild="&lt;br&gt;1-TEI0&lt;br&gt;2-ERI0&lt;br&gt;3-TEI1&lt;br&gt;4-ERI1&lt;br&gt;5-TEI2&lt;br&gt;6-ERI2&lt;br&gt;7-TEI3&lt;br&gt;8-ERI3&lt;br&gt;9-TEI4&lt;br&gt;10-ERI4&lt;br&gt;11-TEI5&lt;br&gt;12-ERI5&lt;br&gt;13-TEI6&lt;br&gt;14-ERI6&lt;br&gt;15-TEI7&lt;br&gt;16-ERI7&lt;br&gt;17-TEI12&lt;br&gt;18-ERI12&lt;br&gt;19-SCIX0&lt;br&gt;20-SCIX1&lt;br&gt;21-SCIX2&lt;br&gt;22-SCIX3&lt;br&gt;23-QSPSSLI&lt;br&gt;24-FERRI&lt;br&gt;25-MENDI&lt;br&gt;26-OVFI&lt;br&gt;27-DOPCI&lt;br&gt;28-PCFEI&lt;br&gt;29-PCERI" id="BL0" priority="9" usedState="使用中"/>
 <Item currentVect="111" groupchild="&lt;br&gt;1-OVFI&lt;br&gt;2-UDFI&lt;br&gt;3-CEFI&lt;br&gt;4-CDETI&lt;br&gt;5-CACI&lt;br&gt;6-SDACI&lt;br&gt;7-CDETIO&lt;br&gt;8-ERRIO&lt;br&gt;9-ACCIO&lt;br&gt;10-OEI1&lt;br&gt;11-OEI2&lt;br&gt;12-OEI3&lt;br&gt;13-OEI4&lt;br&gt;14-TEI0&lt;br&gt;15-EEI0&lt;br&gt;16-TEI2&lt;br&gt;17-EEI2&lt;br&gt;18-SSIF0&lt;br&gt;19-SSIF1&lt;br&gt;20-S12CMPI&lt;br&gt;21-S12CMPI1" id="BL1" priority="15" usedState="未使用"/>
 <Item currentVect="112" groupchild="&lt;br&gt;1-TEIF8&lt;br&gt;2-ERIF8&lt;br&gt;3-BRIF8&lt;br&gt;4-DRIF8&lt;br&gt;5-TEIF9&lt;br&gt;6-ERIF9&lt;br&gt;7-BRIF9&lt;br&gt;8-DRIF9&lt;br&gt;9-TEIF10&lt;br&gt;10-ERIF10&lt;br&gt;11-BRIF10&lt;br&gt;12-DRIF10&lt;br&gt;13-TEIF11&lt;br&gt;14-ERIF11&lt;br&gt;15-BRIF11&lt;br&gt;16-DRIF11&lt;br&gt;17-SPII0&lt;br&gt;18-SPEI0&lt;br&gt;19-SPII1&lt;br&gt;20-SPEI1" id="AL0" priority="15" usedState="未使用"/>
 <Item currentVect="113" groupchild="&lt;br&gt;1-MINT&lt;br&gt;2-PINT&lt;br&gt;3-EINT0&lt;br&gt;4-EINT1" id="AL1" priority="15" usedState="未使用"/>
 <Item currentVect="114" id="SCIFA11_RXIF11" priority="15" usedState="未使用"/>
 <Item currentVect="115" id="SCIFA11_TXIF11" priority="15" usedState="未使用"/>
-<Item currentVect="116" id="SCI12_RXI12" priority="15" usedState="使用中"/>
-<Item currentVect="117" id="SCI12_TXI12" priority="15" usedState="使用中"/>
+<Item currentVect="116" id="SCI12_RXI12" priority="7" usedState="使用中"/>
+<Item currentVect="117" id="SCI12_TXI12" priority="8" usedState="使用中"/>
 <Item currentVect="120" id="DMAC_DMAC0I" priority="15" usedState="未使用"/>
 <Item currentVect="121" id="DMAC_DMAC1I" priority="15" usedState="未使用"/>
 <Item currentVect="122" id="DMAC_DMAC2I" priority="15" usedState="未使用"/>
@@ -1144,7 +1144,7 @@
 <item id="Enable" input="" vlaue="0"/>
 <item id="Disable" input="" vlaue="0"/>
 </option>
-<option enabled="true" id="IntCMWIPriority" selection="Level15">
+<option enabled="true" id="IntCMWIPriority" selection="Level6">
 <item id="Level0" input="" vlaue="0"/>
 <item id="Level1" input="" vlaue="0"/>
 <item id="Level2" input="" vlaue="0"/>
@@ -1283,7 +1283,7 @@
 <item id="Enable" input="" vlaue="0"/>
 <item id="Disable" input="" vlaue="0"/>
 </option>
-<option enabled="true" id="ERIPriority" selection="Level15">
+<option enabled="true" id="ERIPriority" selection="Level9">
 <item id="Level0" input="" vlaue="0"/>
 <item id="Level1" input="" vlaue="0"/>
 <item id="Level2" input="" vlaue="0"/>
@@ -1337,7 +1337,7 @@
 <item id="Internal" input="" vlaue="0"/>
 </option>
 <option enabled="true" id="Bitrate" selection="FreeValue">
-<item id="FreeValue" input="400" vlaue="1"/>
+<item id="FreeValue" input="100" vlaue="1"/>
 <item id="10" input="10" vlaue="0"/>
 <item id="25" input="25" vlaue="0"/>
 <item id="50" input="50" vlaue="0"/>
@@ -1346,21 +1346,21 @@
 <item id="350" input="350" vlaue="0"/>
 <item id="400" input="400" vlaue="0"/>
 </option>
-<option enabled="true" id="DutyCorrection" selection="Disable">
+<option enabled="true" id="DutyCorrection" selection="Enable">
 <item id="Enable" input="" vlaue="0"/>
 <item id="Disable" input="" vlaue="0"/>
 </option>
-<option enabled="true" id="NFEnable" selection="Disable">
+<option enabled="true" id="NFEnable" selection="Enable">
 <item id="Enable" input="" vlaue="0"/>
 <item id="Disable" input="" vlaue="0"/>
 </option>
-<option enabled="false" id="NFClock" selection="Divide1">
+<option enabled="true" id="NFClock" selection="Divide1">
 <item id="Divide1" input="" vlaue="0"/>
 <item id="Divide2" input="" vlaue="0"/>
 <item id="Divide4" input="" vlaue="0"/>
 <item id="Divide8" input="" vlaue="0"/>
 </option>
-<option enabled="true" id="SDAOutDelay" selection="NoDelay">
+<option enabled="true" id="SDAOutDelay" selection="DSSDA1">
 <item id="NoDelay" input="" vlaue="0"/>
 <item id="DSSDA1" input="" vlaue="0"/>
 <item id="DSSDA2" input="" vlaue="0"/>
@@ -1404,11 +1404,11 @@
 <item id="DMAC" input="" vlaue="0"/>
 <item id="DTC" input="" vlaue="0"/>
 </option>
-<option enabled="true" id="ISRMode" selection="ACKNACK">
+<option enabled="true" id="ISRMode" selection="RXITXI">
 <item id="RXITXI" input="" vlaue="0"/>
 <item id="ACKNACK" input="" vlaue="0"/>
 </option>
-<option enabled="true" id="IntTXIPriority" selection="Level15">
+<option enabled="true" id="IntTXIPriority" selection="Level8">
 <item id="Level0" input="" vlaue="0"/>
 <item id="Level1" input="" vlaue="0"/>
 <item id="Level2" input="" vlaue="0"/>
@@ -1426,7 +1426,7 @@
 <item id="Level14" input="" vlaue="0"/>
 <item id="Level15" input="" vlaue="0"/>
 </option>
-<option enabled="true" id="IntRXIPriority" selection="Level15">
+<option enabled="true" id="IntRXIPriority" selection="Level7">
 <item id="Level0" input="" vlaue="0"/>
 <item id="Level1" input="" vlaue="0"/>
 <item id="Level2" input="" vlaue="0"/>
@@ -1444,7 +1444,7 @@
 <item id="Level14" input="" vlaue="0"/>
 <item id="Level15" input="" vlaue="0"/>
 </option>
-<option enabled="true" id="IntTEIPriority" selection="Level15">
+<option enabled="true" id="IntTEIPriority" selection="Level9">
 <item id="Level0" input="" vlaue="0"/>
 <item id="Level1" input="" vlaue="0"/>
 <item id="Level2" input="" vlaue="0"/>

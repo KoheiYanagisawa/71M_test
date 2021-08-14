@@ -22,7 +22,7 @@
 * Version      : 2.0.2
 * Device(s)    : R5F571MFCxFP
 * Description  : This file implements device driver for Config_CMT0.
-* Creation Date: 2021-08-01
+* Creation Date: 2021-08-14
 ***********************************************************************************************************************/
 
 /***********************************************************************************************************************
@@ -38,6 +38,8 @@ Includes
 #include "Config_CMT0.h"
 /* Start user code for include. Do not edit comment generated here */
 #include "test.h"
+#include "LCD.h"
+#include "Timer.h"
 /* End user code. Do not edit comment generated here */
 #include "r_cg_userdefine.h"
 
@@ -45,7 +47,8 @@ Includes
 Global variables and functions
 ***********************************************************************************************************************/
 /* Start user code for global. Do not edit comment generated here */
-int cnt = 0 , cnt_lcd = 0;
+short cnt = 0; 
+short cnt_lcd = 0;
 /* End user code. Do not edit comment generated here */
 
 /***********************************************************************************************************************
@@ -77,10 +80,12 @@ void R_Config_CMT0_Create_UserInit(void)
 static void r_Config_CMT0_cmi0_interrupt(void)
 {
     /* Start user code for r_Config_CMT0_cmi0_interrupt. Do not edit comment generated here */
-   // __setpsw_i();
-    printf("%d\n\r",cnt);
-    cnt++;
-    cnt_lcd++;
+    __setpsw_i();
+   cnt++;
+   if(cnt>10) {
+  	 printf("ok");
+   }
+    lcdShowProcess();
     /* End user code. Do not edit comment generated here */
 }
 

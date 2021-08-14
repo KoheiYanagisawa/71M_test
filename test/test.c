@@ -30,6 +30,7 @@
 #include "r_smc_entry.h"
 #include"test.h"
 #include<stdio.h>
+#include"LCD.h"
 #ifdef __cplusplus
 //#include <ios>                        // Remove the comment when you use ios
 //_SINT ios_base::Init::init_cnt;       // Remove the comment when you use ios
@@ -44,22 +45,15 @@ void abort(void);
 
 void main(void)
 {
-	int i;
-	printf("Hello word\n\r");
-	PORTB.PODR.BIT.B0 = 0;
-	PORTB.PODR.BIT.B2 = 0;
-	PORTB.PODR.BIT.B4 = 0;
-	R_Config_CMT0_Start();
-	while(1){
-	    if(cnt>=500){
-		cnt = 0;
-		PORTB.PODR.BIT.B0 = !PORTB.PODR.BIT.B0;
-		PORTB.PODR.BIT.B2 = !PORTB.PODR.BIT.B2;
-		PORTB.PODR.BIT.B4 = !PORTB.PODR.BIT.B4;
-		
-	    }
-    	}
+	R_Config_SCI12_Start();
 
+	inti_lcd();
+
+	R_Config_CMT0_Start();
+
+	lcdPosition( 0, 0 );
+	lcdPrintf("zg      ");
+	lcdPosition( 0, 1 );
 
 }
 

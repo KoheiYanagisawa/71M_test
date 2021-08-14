@@ -22,7 +22,7 @@
 * Version      : 2.0.2
 * Device(s)    : R5F571MFCxFP
 * Description  : This file implements device driver for Config_CMT0.
-* Creation Date: 2021-08-01
+* Creation Date: 2021-08-14
 ***********************************************************************************************************************/
 
 /***********************************************************************************************************************
@@ -37,6 +37,7 @@ Includes
 #include "r_cg_macrodriver.h"
 #include "Config_CMT0.h"
 /* Start user code for include. Do not edit comment generated here */
+
 /* End user code. Do not edit comment generated here */
 #include "r_cg_userdefine.h"
 
@@ -44,6 +45,7 @@ Includes
 Global variables and functions
 ***********************************************************************************************************************/
 /* Start user code for global. Do not edit comment generated here */
+
 /* End user code. Do not edit comment generated here */
 
 /***********************************************************************************************************************
@@ -68,7 +70,7 @@ void R_Config_CMT0_Create(void)
     CMT0.CMCOR = _1D4B_CMT0_CMCOR_VALUE;
     
     /* Set CMI0 priority level */
-    IPR(CMT0,CMI0) = _0F_CMT_PRIORITY_LEVEL15;
+    IPR(CMT0,CMI0) = _06_CMT_PRIORITY_LEVEL6;
     
     R_Config_CMT0_Create_UserInit();
 }

@@ -22,7 +22,7 @@
 * Version      : 1.9.2
 * Device(s)    : R5F571MFCxFP
 * Description  : This file implements device driver for Config_SCI12.
-* Creation Date: 2021-08-01
+* Creation Date: 2021-08-14
 ***********************************************************************************************************************/
 
 #ifndef CFG_Config_SCI12_H

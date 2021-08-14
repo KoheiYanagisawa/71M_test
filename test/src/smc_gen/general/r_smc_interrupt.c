@@ -22,7 +22,7 @@
 * Version      : 1.2.2
 * Device(s)    : R5F571MFCxFP
 * Description  : This file implements interrupt setting.
-* Creation Date: 2021-08-01
+* Creation Date: 2021-08-14
 ***********************************************************************************************************************/
 
 /***********************************************************************************************************************
@@ -60,7 +60,7 @@ void R_Interrupt_Create(void)
     
 
     /* Set group BL0 interrupt priority level */
-    IPR(ICU,GROUPBL0) = _0F_ICU_PRIORITY_LEVEL15;
+    IPR(ICU,GROUPBL0) = _09_ICU_PRIORITY_LEVEL9;
 
     /* Enable group BL0 interrupt */
     IEN(ICU,GROUPBL0) = 1U;
