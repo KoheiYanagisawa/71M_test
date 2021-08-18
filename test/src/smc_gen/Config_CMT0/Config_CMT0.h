@@ -22,7 +22,7 @@
 * Version      : 2.0.2
 * Device(s)    : R5F571MFCxFP
 * Description  : This file implements device driver for Config_CMT0.
-* Creation Date: 2021-08-14
+* Creation Date: 2021-08-19
 ***********************************************************************************************************************/
 
 #ifndef CFG_Config_CMT0_H

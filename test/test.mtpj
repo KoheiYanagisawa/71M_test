@@ -1102,12 +1102,12 @@
       <COptionIncode-DefaultValue>Sjis</COptionIncode-DefaultValue>
       <COptionBranchChaining-DefaultValue>None</COptionBranchChaining-DefaultValue>
       <IsLockedByUser>False</IsLockedByUser>
-      <TimeTagModified--0>-8585728769127568082</TimeTagModified--0>
+      <TimeTagModified--0>-8585723708809242314</TimeTagModified--0>
       <COptionLangC-0>C99</COptionLangC-0>
       <COptionListfile-0>False</COptionListfile-0>
       <COptionLogo-0>False</COptionLogo-0>
       <COptionMisra-0>Misra2012</COptionMisra-0>
-      <COptionOptimize-0>Level2</COptionOptimize-0>
+      <COptionOptimize-0>Level0</COptionOptimize-0>
       <COptionOutput-0>Object</COptionOutput-0>
       <COptionOutputAssembly-0>False</COptionOutputAssembly-0>
       <COptionOutputDepOrOutputObj-0>-output=obj</COptionOutputDepOrOutputObj-0>
@@ -1121,7 +1121,8 @@
       <COptionXcref-0>False</COptionXcref-0>
       <COptionControlFlowIntegrity-0>None</COptionControlFlowIntegrity-0>
       <COptionDebug-0>True</COptionDebug-0>
-      <COptionInclude-0>src\smc_gen\Config_SCI12
+      <COptionInclude-0>i2c_lcd_38a\i2c_lcd_38a
+src\smc_gen\Config_SCI12
 .
 src\smc_gen\Config_SCI1
 src\smc_gen\r_pincfg
@@ -1216,7 +1217,7 @@ src\smc_gen\Config_CMT0
       <COptionMisraIntermodule-0>False</COptionMisraIntermodule-0>
       <COptionSchedule-0>Auto</COptionSchedule-0>
       <COptionChangeMessageWarningNumber-0 />
-      <COptionMap-0>NoMap</COptionMap-0>
+      <COptionMap-0>Map</COptionMap-0>
       <COptionNouseDiv-0>True</COptionNouseDiv-0>
       <COptionInsertNopWithLabel-0>False</COptionInsertNopWithLabel-0>
       <COptionIntermodule-0>None</COptionIntermodule-0>
@@ -1373,7 +1374,7 @@ D_2=R_2
       <LinkOptionCommandLine-DefaultValue />
       <LinkOptionSplitVect-DefaultValue>False</LinkOptionSplitVect-DefaultValue>
       <IsLockedByUser>False</IsLockedByUser>
-      <TimeTagModified--0>-8585743998558098678</TimeTagModified--0>
+      <TimeTagModified--0>-8585723702919734212</TimeTagModified--0>
       <LinkOptionCpu-0>False</LinkOptionCpu-0>
       <LinkOptionForm-0>Absolute</LinkOptionForm-0>
       <LinkOptionFormConvert-0>Stype</LinkOptionFormConvert-0>
@@ -1412,7 +1413,7 @@ D_2=R_2
       <LinkOptionChangeMessageInformationNumber-0 />
       <LinkOptionConvertFolder-0>%BuildModeName%</LinkOptionConvertFolder-0>
       <LinkOptionDefine-0 />
-      <LinkOptionMap-0>False</LinkOptionMap-0>
+      <LinkOptionMap-0>True</LinkOptionMap-0>
       <LinkOptionOptimizeShortFormat-0>False</LinkOptionOptimizeShortFormat-0>
       <LinkOptionShowTotalSize-0>False</LinkOptionShowTotalSize-0>
       <LinkOptionChangeMessageWarning-0>None</LinkOptionChangeMessageWarning-0>

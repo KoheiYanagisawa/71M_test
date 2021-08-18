@@ -151,6 +151,7 @@
           <Option>-fpu</Option>
           <Option>-dbl_size=8</Option>
           <Option>-lang=c99</Option>
+          <Option>-include=i2c_lcd_38a\i2c_lcd_38a</Option>
           <Option>-include=src\smc_gen\Config_SCI12</Option>
           <Option>-include=.</Option>
           <Option>-include=src\smc_gen\Config_SCI1</Option>
@@ -168,6 +169,8 @@
           <Option>-output=obj=%BuildModeName%\%FileLeaf%.obj</Option>
           <Option>-debug</Option>
           <Option>-g_line</Option>
+          <Option>-optimize=0</Option>
+          <Option>-map=%BuildModeName%\1st\%ProjectName%.bls</Option>
           <Option>-nologo</Option>
         </CompileOptions>
         <AssembleOptions>
@@ -179,6 +182,7 @@
         </AssembleOptions>
         <LinkOptions>
           <Option>-output=%BuildModeName%\%ProjectName%.abs</Option>
+          <Option>-map=%BuildModeName%\1st\%ProjectName%.bls</Option>
           <Option>-vect=_undefined_interrupt_source_isr</Option>
           <Option>-list=%BuildModeName%\%ProjectName%.map</Option>
           <Option>-nooptimize</Option>
@@ -239,6 +243,7 @@
           <Path>DefaultBuild\LCD.obj</Path>
         </LinkOrder>
         <CommonOptions>
+          <IncludePathForC>i2c_lcd_38a\i2c_lcd_38a</IncludePathForC>
           <IncludePathForC>src\smc_gen\Config_SCI12</IncludePathForC>
           <IncludePathForC>.</IncludePathForC>
           <IncludePathForC>src\smc_gen\Config_SCI1</IncludePathForC>

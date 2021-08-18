@@ -18,65 +18,46 @@
 ***********************************************************************************************************************/
 
 /***********************************************************************************************************************
-* File Name    : r_cg_macrodriver.h
-* Version      : 1.4.102
+* File Name    : Config_MTU2_user.c
+* Version      : 2.1.1
 * Device(s)    : R5F571MFCxFP
-* Description  : Macro header file for code generation.
+* Description  : This file implements device driver for Config_MTU2.
 * Creation Date: 2021-08-19
 ***********************************************************************************************************************/
 
-#ifndef MACRODRIVER_H
-#define MACRODRIVER_H
+/***********************************************************************************************************************
+Pragma directive
+***********************************************************************************************************************/
+/* Start user code for pragma. Do not edit comment generated here */
+/* End user code. Do not edit comment generated here */
 
 /***********************************************************************************************************************
 Includes
 ***********************************************************************************************************************/
-#include "platform.h"
-#include "r_smc_interrupt.h"
-#include <machine.h>
-
-/***********************************************************************************************************************
-Macro definitions (Register bit)
-***********************************************************************************************************************/
-
-/***********************************************************************************************************************
-Macro definitions
-***********************************************************************************************************************/
-#ifndef __TYPEDEF__
-
-/* Status list definition */
-#define MD_STATUSBASE        (0x00U)
-#define MD_OK                (MD_STATUSBASE + 0x00U) /* register setting OK */
-#define MD_SPT               (MD_STATUSBASE + 0x01U) /* IIC stop */
-#define MD_NACK              (MD_STATUSBASE + 0x02U) /* IIC no ACK */
-#define MD_BUSY1             (MD_STATUSBASE + 0x03U) /* busy 1 */
-#define MD_BUSY2             (MD_STATUSBASE + 0x04U) /* busy 2 */
-
-/* Error list definition */
-#define MD_ERRORBASE         (0x80U)
-#define MD_ERROR             (MD_ERRORBASE + 0x00U)  /* error */
-#define MD_ARGERROR          (MD_ERRORBASE + 0x01U)  /* error argument input error */
-#define MD_ERROR1            (MD_ERRORBASE + 0x02U)  /* error 1 */
-#define MD_ERROR2            (MD_ERRORBASE + 0x03U)  /* error 2 */
-#define MD_ERROR3            (MD_ERRORBASE + 0x04U)  /* error 3 */
-#define MD_ERROR4            (MD_ERRORBASE + 0x05U)  /* error 4 */
-#define MD_ERROR5            (MD_ERRORBASE + 0x06U)  /* error 5 */
-
-#endif
-
-/***********************************************************************************************************************
-Typedef definitions
-***********************************************************************************************************************/
-#ifndef __TYPEDEF__
-    typedef unsigned short      MD_STATUS;
-    #define __TYPEDEF__
-#endif
-
-/***********************************************************************************************************************
-Global functions
-***********************************************************************************************************************/
-void R_Systeminit(void);
-/* Start user code for function. Do not edit comment generated here */
+#include "r_cg_macrodriver.h"
+#include "Config_MTU2.h"
+/* Start user code for include. Do not edit comment generated here */
 /* End user code. Do not edit comment generated here */
-#endif
+#include "r_cg_userdefine.h"
 
+/***********************************************************************************************************************
+Global variables and functions
+***********************************************************************************************************************/
+/* Start user code for global. Do not edit comment generated here */
+/* End user code. Do not edit comment generated here */
+
+/***********************************************************************************************************************
+* Function Name: R_Config_MTU2_Create_UserInit
+* Description  : This function adds user code after initializing the MTU2 channel
+* Arguments    : None
+* Return Value : None
+***********************************************************************************************************************/
+
+void R_Config_MTU2_Create_UserInit(void)
+{
+    /* Start user code for user init. Do not edit comment generated here */
+    /* End user code. Do not edit comment generated here */
+}
+
+/* Start user code for adding. Do not edit comment generated here */
+/* End user code. Do not edit comment generated here */

@@ -118,7 +118,7 @@ static void lcdLocate( int x, int y )
 //////////////////////////////////////////////////////////////////////////
 void lcdShowProcess( void )
 {
-	printf("ok");
+	//printf("ok");
     switch( lcdMode2 ) {
     case 1: // データ更新されたかチェック
     	if( lcdRefreshFlag ) {

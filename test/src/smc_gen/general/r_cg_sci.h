@@ -22,7 +22,7 @@
 * Version      : 1.4.102
 * Device(s)    : R5F571MFCxFP
 * Description  : General header file for SCI peripheral.
-* Creation Date: 2021-08-14
+* Creation Date: 2021-08-19
 ***********************************************************************************************************************/
 
 #ifndef SCI_H

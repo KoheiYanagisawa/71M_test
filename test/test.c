@@ -31,6 +31,8 @@
 #include"test.h"
 #include<stdio.h>
 #include"LCD.h"
+#include "AD.h"
+//#include"IMU.h"
 #ifdef __cplusplus
 //#include <ios>                        // Remove the comment when you use ios
 //_SINT ios_base::Init::init_cnt;       // Remove the comment when you use ios
@@ -46,14 +48,24 @@ void abort(void);
 void main(void)
 {
 	R_Config_SCI12_Start();
-
+	//printf("test");ok
+	//R_Config_SCI6_Start();
 	inti_lcd();
-
+	//printf("test");ok
+	//init_IMU();//設定に時間がかかる?
 	R_Config_CMT0_Start();
-
+	//printf("test");
+	// 位相計数モード計測開始
+	R_Config_MTU2_Start();
+	//A/D変換開始
+	R_Config_S12AD0_Start();
+	
 	lcdPosition( 0, 0 );
 	lcdPrintf("zg      ");
-	lcdPosition( 0, 1 );
+	//printf("test");
+	while(1){
+		__nop();
+	}
 
 }
 
