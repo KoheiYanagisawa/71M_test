@@ -35,6 +35,9 @@
           <Path>src\smc_gen\general\r_cg_sci.h</Path>
           <Path>src\smc_gen\general\r_cg_scif.h</Path>
           <Path>src\smc_gen\general\r_cg_riic.h</Path>
+          <Path>src\smc_gen\general\r_cg_mtu3.h</Path>
+          <Path>src\smc_gen\general\r_cg_tpu.h</Path>
+          <Path>src\smc_gen\general\r_cg_s12ad.h</Path>
         </Category>
         <Category Name="r_bsp">
           <Path>src\smc_gen\r_bsp\platform.h</Path>
@@ -129,11 +132,23 @@
           <Path>src\smc_gen\Config_SCI12\Config_SCI12.h</Path>
           <Path>src\smc_gen\Config_SCI12\Config_SCI12_user.c</Path>
         </Category>
+        <Category Name="Config_MTU2">
+          <Path>src\smc_gen\Config_MTU2\Config_MTU2.c</Path>
+          <Path>src\smc_gen\Config_MTU2\Config_MTU2.h</Path>
+          <Path>src\smc_gen\Config_MTU2\Config_MTU2_user.c</Path>
+        </Category>
+        <Category Name="Config_S12AD0">
+          <Path>src\smc_gen\Config_S12AD0\Config_S12AD0.c</Path>
+          <Path>src\smc_gen\Config_S12AD0\Config_S12AD0.h</Path>
+          <Path>src\smc_gen\Config_S12AD0\Config_S12AD0_user.c</Path>
+        </Category>
       </Category>
       <Path>test.h</Path>
       <Path>LCD.h</Path>
       <Path>Timer.h</Path>
       <Path>LCD.c</Path>
+      <Path>AD.c</Path>
+      <Path>AD.h</Path>
     </Files>
     <DebugOptions>
       <DebugTool>Simulator</DebugTool>
@@ -151,6 +166,8 @@
           <Option>-fpu</Option>
           <Option>-dbl_size=8</Option>
           <Option>-lang=c99</Option>
+          <Option>-include=src\smc_gen\Config_S12AD0</Option>
+          <Option>-include=src\smc_gen\Config_MTU2</Option>
           <Option>-include=i2c_lcd_38a\i2c_lcd_38a</Option>
           <Option>-include=src\smc_gen\Config_SCI12</Option>
           <Option>-include=.</Option>
@@ -169,7 +186,6 @@
           <Option>-output=obj=%BuildModeName%\%FileLeaf%.obj</Option>
           <Option>-debug</Option>
           <Option>-g_line</Option>
-          <Option>-optimize=0</Option>
           <Option>-map=%BuildModeName%\1st\%ProjectName%.bls</Option>
           <Option>-nologo</Option>
         </CompileOptions>
@@ -241,8 +257,15 @@
           <Path>DefaultBuild\Config_SCI12.obj</Path>
           <Path>DefaultBuild\Config_SCI12_user.obj</Path>
           <Path>DefaultBuild\LCD.obj</Path>
+          <Path>DefaultBuild\Config_MTU2.obj</Path>
+          <Path>DefaultBuild\Config_MTU2_user.obj</Path>
+          <Path>DefaultBuild\Config_S12AD0.obj</Path>
+          <Path>DefaultBuild\Config_S12AD0_user.obj</Path>
+          <Path>DefaultBuild\AD.obj</Path>
         </LinkOrder>
         <CommonOptions>
+          <IncludePathForC>src\smc_gen\Config_S12AD0</IncludePathForC>
+          <IncludePathForC>src\smc_gen\Config_MTU2</IncludePathForC>
           <IncludePathForC>i2c_lcd_38a\i2c_lcd_38a</IncludePathForC>
           <IncludePathForC>src\smc_gen\Config_SCI12</IncludePathForC>
           <IncludePathForC>.</IncludePathForC>
