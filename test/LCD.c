@@ -1,9 +1,8 @@
-<<<<<<< HEAD
+  
 //=====================================//
 // ƒCƒ“ƒNƒ‹[ƒh									 //
 //====================================//
 #include "LCD.h"
-#include "Timer.h"
 //====================================//
 // ƒOƒ[ƒoƒ‹•Ï”‚ÌéŒ¾								//
 //====================================//
@@ -25,36 +24,10 @@ char	busLCD = BUS_LCD_FREE;
 void lcd_put( unsigned char data )
 {
 	uint8_t word[2] = { RSBIT1, data };
-=======
-#ifndef LCD_C
-#define LCD_C
-//ï¿½Cï¿½ï¿½ï¿½Nï¿½ï¿½ï¿½[ï¿½h----------------------------------------------------------------------------------------------------------------
-
-#include"LCD.h"
-
-//ï¿½Oï¿½ï¿½ï¿½[ï¿½oï¿½ï¿½ï¿½Ïï¿½--------------------------------------------------------------------------------------------------------------
-
-
-//ï¿½ï¿½ï¿½ï¿½Öï¿½--------------------------------------------------------------------------------------------------------------------
-
-//ï¿½Rï¿½}ï¿½ï¿½ï¿½hï¿½ï¿½ï¿½Mï¿½Öï¿½
-
-void lcd_CMD(unsigned char cmd){
-	uint8_t Command[2] = { RSBIT0, cmd };
-	I2C_LCD_CMD;
-
-}
-
-//ï¿½fï¿½[ï¿½^ï¿½ï¿½ï¿½Mï¿½Öï¿½
-
-void lcd_DATE(unsigned char date){
-	uint8_t word[2] = { RSBIT1, date };	
->>>>>>> origin/master
 	I2C_LCD_SEND;
 	busLCD = BUS_LCD_BUSY;
 	while(busLCD)__nop();
 }
-<<<<<<< HEAD
 //////////////////////////////////////////////////////////////////////////
 // ƒ‚ƒWƒ…[ƒ‹–¼ lcd_CMD	                                                //
 // ˆ—ŠT—v     ƒRƒ}ƒ“ƒh‘—M                                            //
@@ -74,23 +47,11 @@ void lcd_CMD( unsigned char cmd )
 // ˆø”         ’x‰„ŽžŠÔ(ms)						//
 // –ß‚è’l       ‚È‚µ                                                    //
 //////////////////////////////////////////////////////////////////////////
-void wait_lcd ( short Time )
+void wait_lcd ( short waitTime )
 {
 	volatile int time, i = 0;
-=======
-//ï¿½xï¿½ï¿½ï¿½Öï¿½
-
-void wait_lcd(int time){
-	cnt_lcd = 0;
-	while(time >= cnt_lcd){
-	}
-	return 0;
-}
-//LCDï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Öï¿½
-void inti_lcd(void){
->>>>>>> origin/master
 	
-	time = (int)Time * ( CLOCK * 1000 )/ 16;
+	time = (int)waitTime * ( CLOCK * 1000 )/ 16;
 	for ( i = 0; i < time; i++) __nop();
 }
 //////////////////////////////////////////////////////////////////////////
@@ -101,28 +62,26 @@ void inti_lcd(void){
 //////////////////////////////////////////////////////////////////////////
  void inti_lcd(void)
  {
-	//printf("ok");
 	wait_lcd(4);
-	lcd_CMD(0x38);	// function set			: ï¿½fï¿½[ï¿½^ï¿½ï¿½ï¿½ï¿½8ï¿½{ï¿½Eï¿½\ï¿½ï¿½ï¿½Í‚Qï¿½sï¿½Eï¿½tï¿½Hï¿½ï¿½ï¿½gï¿½ï¿½5x8ï¿½hï¿½bï¿½g
+	lcd_CMD(0x38);	// function set			: ƒf[ƒ^ü‚Í8–{E•\Ž¦‚Í‚QsEƒtƒHƒ“ƒg‚Í5x8ƒhƒbƒg
 	wait_lcd(1);
-	lcd_CMD(0x39);	// function set           	: ï¿½gï¿½ï¿½ï¿½Rï¿½}ï¿½ï¿½ï¿½hï¿½ÌÝ’ï¿½ï¿½Lï¿½ï¿½ï¿½É‚ï¿½ï¿½ï¿½
+	lcd_CMD(0x39);	// function set           	: Šg’£ƒRƒ}ƒ“ƒh‚ÌÝ’è‚ð—LŒø‚É‚·‚é
 	wait_lcd(1);
-	lcd_CMD(0x14);	// Internal OSC frequency 	: ï¿½oï¿½Cï¿½Aï¿½Xï¿½Ì‘Iï¿½ï¿½ï¿½Æ“ï¿½ï¿½ï¿½OSCï¿½ï¿½ï¿½gï¿½ï¿½ï¿½Ì’ï¿½ï¿½ï¿½
+	lcd_CMD(0x14);	// Internal OSC frequency 	: ƒoƒCƒAƒX‚Ì‘I‘ð‚Æ“à•”OSCŽü”g”‚Ì’²®
 	wait_lcd(1);
-	lcd_CMD(0x70);	// Contrast set          	: ï¿½Rï¿½ï¿½ï¿½gï¿½ï¿½ï¿½Xï¿½gï¿½ï¿½ï¿½ï¿½ï¿½fï¿½[ï¿½^(ï¿½ï¿½ï¿½ï¿½4ï¿½rï¿½bï¿½g)
+	lcd_CMD(0x70);	// Contrast set          	: ƒRƒ“ƒgƒ‰ƒXƒg’²®ƒf[ƒ^(‰ºˆÊ4ƒrƒbƒg)
 	wait_lcd(1);
-	lcd_CMD(0x56);	// Power/ICON/Contrast control	: ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Hï¿½Lï¿½ï¿½ï¿½Aï¿½Rï¿½ï¿½ï¿½gï¿½ï¿½ï¿½Xï¿½gï¿½ï¿½ï¿½ï¿½ï¿½fï¿½[ï¿½^(ï¿½ï¿½ï¿½2ï¿½rï¿½bï¿½g)
+	lcd_CMD(0x56);	// Power/ICON/Contrast control	: ¸ˆ³‰ñ˜H—LŒøAƒRƒ“ƒgƒ‰ƒXƒg’²®ƒf[ƒ^(ãˆÊ2ƒrƒbƒg)
 	wait_lcd(1);
-	lcd_CMD(0x6c);	// Follower control     	: ï¿½tï¿½Hï¿½ï¿½ï¿½Aï¿½ï¿½Hï¿½ï¿½ONï¿½Aï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì’ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½sï¿½ï¿½
+	lcd_CMD(0x6c);	// Follower control     	: ƒtƒHƒƒA‰ñ˜H‚ðONA‘•—¦‚Ì’²®‚ðs‚¤
 	wait_lcd(200);
-	lcd_CMD(0x38);	// function set         	: ï¿½gï¿½ï¿½ï¿½Rï¿½}ï¿½ï¿½ï¿½hï¿½ï¿½Ý’ï¿½ð–³Œï¿½ï¿½É‚ï¿½ï¿½ï¿½
+	lcd_CMD(0x38);	// function set         	: Šg’£ƒRƒ}ƒ“ƒh‚ðÝ’è‚ð–³Œø‚É‚·‚é
 	wait_lcd(1);
-	lcd_CMD(0x0c);	// display ON/OFF control      	: ï¿½ï¿½Ê•\ï¿½ï¿½ï¿½ï¿½ONï¿½Eï¿½Jï¿½[ï¿½\ï¿½ï¿½ï¿½\ï¿½ï¿½ï¿½ï¿½OFFï¿½Eï¿½Jï¿½[ï¿½\ï¿½ï¿½ï¿½_ï¿½Å‚ï¿½OFF
+	lcd_CMD(0x0c);	// display ON/OFF control      	: ‰æ–Ê•\Ž¦‚ÍONEƒJ[ƒ\ƒ‹•\Ž¦‚ÍOFFEƒJ[ƒ\ƒ‹“_–Å‚ÍOFF
 	wait_lcd(1);
-	lcd_CMD(0x01);	// Clear Display 		: ï¿½ï¿½Ê‘Sï¿½Ì‚ï¿½20Hï¿½Ì½ï¿½ß°ï¿½ï¿½Å•\ï¿½ï¿½ï¿½Aï¿½ï¿½ï¿½Ù‚ï¿½col=0,row=0ï¿½ÉˆÚ“ï¿½
+	lcd_CMD(0x01);	// Clear Display 		: ‰æ–Ê‘S‘Ì‚É20H‚Ì½Íß°½‚Å•\Ž¦A¶°¿Ù‚Ícol=0,row=0‚ÉˆÚ“®
 	wait_lcd(2);
 }
-<<<<<<< HEAD
 //////////////////////////////////////////////////////////////////////////
 // ƒ‚ƒWƒ…[ƒ‹–¼ lcdLocate						//
 // ˆ—ŠT—v     ‰t»ƒJ[ƒ\ƒ‹ˆÚ“®					//
@@ -131,7 +90,6 @@ void inti_lcd(void){
 //////////////////////////////////////////////////////////////////////////
 static void lcdLocate( int x, int y )
 {
-	//printf("ok");	
     volatile unsigned char work = 0x80;
 
     // x‚ÌŒvŽZ
@@ -158,7 +116,6 @@ static void lcdLocate( int x, int y )
 //////////////////////////////////////////////////////////////////////////
 void lcdShowProcess( void )
 {
-	//printf("ok");
     switch( lcdMode2 ) {
     case 1: // ƒf[ƒ^XV‚³‚ê‚½‚©ƒ`ƒFƒbƒN
     	if( lcdRefreshFlag ) {
@@ -233,35 +190,6 @@ void lcdPosition(char x ,char y)
 {
     if( x >= LCD_MAX_X ) return;
     if( y >= LCD_MAX_Y ) return;
-=======
-//LCDï¿½Jï¿½[ï¿½\ï¿½ï¿½ï¿½Ú“ï¿½
-static void lcdLocate(int x, int y){
-	
-	volatile unsigned char work = 0x80;		//set DDRAM address
-	
-	//xï¿½ÌŒvï¿½Z
-	work += x;
-	
-	//yï¿½ÌŒvï¿½Z
-	if(y == 1) work += 0x40;
-	else if(y == 2) work += 0x14;
-	
-	//ï¿½Rï¿½}ï¿½ï¿½ï¿½hï¿½ï¿½ï¿½ï¿½
-	lcd_CMD(work);
-	
-}
-//æ¶²æ™¶è¡¨ç¤ºé–¢æ•°
-void lcd_print (char *str){
-	for (int i = 0 ; i < strlen(str); i ++) lcd_DATE (str[1]) ;
-}
-
-//æ–‡å­—åˆ—è¡¨ç¤ºé–¢æ•°
-void LCDprint(int x, int y, char *str){
-	//ã‚«ãƒ¼ã‚½ãƒ«ã‚’ï¼ˆï½˜ã€ï½™ï¼‰ã«ç§»å‹•ã—ã¦æ–‡å­—åˆ—ã‚’è¡¨ç¤º
-	lcdLocate(x, y);
-	lcd_print(str);
-}
->>>>>>> origin/master
 
     lcdBuffPosition = x + y * LCD_MAX_X;
 }

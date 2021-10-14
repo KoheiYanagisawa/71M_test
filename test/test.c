@@ -31,8 +31,9 @@
 #include"test.h"
 #include<stdio.h>
 #include"LCD.h"
-#include "AD.h"
-//#include"IMU.h"
+#include"AD.h"
+#include"Timer.h"
+#include"SPI_icm20948.h"
 #ifdef __cplusplus
 //#include <ios>                        // Remove the comment when you use ios
 //_SINT ios_base::Init::init_cnt;       // Remove the comment when you use ios
@@ -47,24 +48,29 @@ void abort(void);
 
 void main(void)
 {
+	PORTB.PODR.BIT.B0 = 1;
+	PORTB.PODR.BIT.B2 = 1;
+	PORTB.PODR.BIT.B4 = 1;
+	//I2C通信開始
 	R_Config_SCI12_Start();
-	//printf("test");ok
-	//R_Config_SCI6_Start();
-	inti_lcd();
-	//printf("test");ok
-	//init_IMU();//設定に時間がかかる?
+	inti_lcd();//LCDセットアップ
+	//SPI通信開始
+	R_Config_SCI2_Start();
+	//spi_init();
+	//タイマ割込み開始
 	R_Config_CMT0_Start();
-	//printf("test");
-	// 位相計数モード計測開始
+	//位相計数モード計測開始
 	R_Config_MTU2_Start();
 	//A/D変換開始
 	R_Config_S12AD0_Start();
-	
 	lcdPosition( 0, 0 );
 	lcdPrintf("zg      ");
-	//printf("test");
+
 	while(1){
-		__nop();
+		if(cnt == 100){
+			cnt = 0;
+			spi_init();	
+		}
 	}
 
 }

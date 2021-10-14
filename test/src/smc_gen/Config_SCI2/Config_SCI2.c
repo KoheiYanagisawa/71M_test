@@ -18,10 +18,10 @@
 ***********************************************************************************************************************/
 
 /***********************************************************************************************************************
-* File Name    : Config_SCI1.c
-* Version      : 1.9.2
+* File Name    : Config_SCI2.c
+* Version      : 1.9.3
 * Device(s)    : R5F571MFCxFP
-* Description  : This file implements device driver for Config_SCI1.
+* Description  : This file implements device driver for Config_SCI2.
 * Creation Date: 2021-09-09
 ***********************************************************************************************************************/
 
@@ -35,7 +35,7 @@ Pragma directive
 Includes
 ***********************************************************************************************************************/
 #include "r_cg_macrodriver.h"
-#include "Config_SCI1.h"
+#include "Config_SCI2.h"
 /* Start user code for include. Do not edit comment generated here */
 /* End user code. Do not edit comment generated here */
 #include "r_cg_userdefine.h"
@@ -43,155 +43,133 @@ Includes
 /***********************************************************************************************************************
 Global variables and functions
 ***********************************************************************************************************************/
-volatile uint8_t * gp_sci1_tx_address;                /* SCI1 transmit buffer address */
-volatile uint16_t  g_sci1_tx_count;                   /* SCI1 transmit data number */
-volatile uint8_t * gp_sci1_rx_address;                /* SCI1 receive buffer address */
-volatile uint16_t  g_sci1_rx_count;                   /* SCI1 receive data number */
-volatile uint16_t  g_sci1_rx_length;                  /* SCI1 receive data length */
+volatile uint8_t * gp_sci2_tx_address;               /* SCI2 transmit buffer address */
+volatile uint16_t  g_sci2_tx_count;                  /* SCI2 transmit data number */
+volatile uint8_t * gp_sci2_rx_address;               /* SCI2 receive buffer address */
+volatile uint16_t  g_sci2_rx_count;                  /* SCI2 receive data number */
+volatile uint16_t  g_sci2_rx_length;                 /* SCI2 receive data length */
 /* Start user code for global. Do not edit comment generated here */
 /* End user code. Do not edit comment generated here */
 
 /***********************************************************************************************************************
-* Function Name: R_Config_SCI1_Create
-* Description  : This function initializes the SCI1 channel
+* Function Name: R_Config_SCI2_Create
+* Description  : This function initializes SCI2
 * Arguments    : None
 * Return Value : None
 ***********************************************************************************************************************/
 
-void R_Config_SCI1_Create(void)
+void R_Config_SCI2_Create(void)
 {
-    /* Cancel SCI stop state */
-    MSTP(SCI1) = 0U;
+    /* Cancel SCI2 module stop state */
+    MSTP(SCI2) = 0U;
 
     /* Set interrupt priority */
-    IPR(SCI1,RXI1) = _0F_SCI_PRIORITY_LEVEL15;
-    IPR(SCI1,TXI1) = _0F_SCI_PRIORITY_LEVEL15;
+    IPR(SCI2,TXI2) = _0F_SCI_PRIORITY_LEVEL15;
+    IPR(SCI2,RXI2) = _0F_SCI_PRIORITY_LEVEL15;
 
     /* Clear the control register */
-    SCI1.SCR.BYTE = 0x00U;
+    SCI2.SCR.BYTE = 0x00U;
 
     /* Set clock enable */
-    SCI1.SCR.BYTE = _00_SCI_INTERNAL_SCK_UNUSED;
+    SCI2.SCR.BYTE |= _01_SCI_INTERNAL_SCK_OUTPUT;
 
-    /* Clear the SIMR1.IICM, SPMR.CKPH, and CKPOL bit, and set SPMR */
-    SCI1.SIMR1.BIT.IICM = 0U;
-    SCI1.SPMR.BYTE = _00_SCI_RTS | _00_SCI_CLOCK_NOT_INVERTED | _00_SCI_CLOCK_NOT_DELAYED;
+    /* Clear the SIMR1.IICM */
+    SCI2.SIMR1.BIT.IICM = 0U;
 
     /* Set control registers */
-    SCI1.SMR.BYTE = _00_SCI_CLOCK_PCLK | _00_SCI_MULTI_PROCESSOR_DISABLE | _00_SCI_STOP_1 | _00_SCI_PARITY_DISABLE | 
-                    _00_SCI_DATA_LENGTH_8 | _00_SCI_ASYNCHRONOUS_OR_I2C_MODE;
-    SCI1.SCMR.BYTE = _00_SCI_SERIAL_MODE | _00_SCI_DATA_INVERT_NONE | _00_SCI_DATA_LSB_FIRST | 
+    SCI2.SPMR.BYTE = _00_SCI_SS_PIN_DISABLE | _00_SCI_SPI_MASTER | _00_SCI_CLOCK_NOT_INVERTED | 
+                     _00_SCI_CLOCK_NOT_DELAYED;
+    SCI2.SMR.BYTE = _80_SCI_CLOCK_SYNCHRONOUS_OR_SPI_MODE | _00_SCI_CLOCK_PCLK;
+    SCI2.SCMR.BYTE = _00_SCI_SERIAL_MODE | _00_SCI_DATA_INVERT_NONE | _08_SCI_DATA_MSB_FIRST | 
                      _10_SCI_DATA_LENGTH_8_OR_7 | _62_SCI_SCMR_DEFAULT;
-    SCI1.SEMR.BYTE = _00_SCI_BIT_MODULATION_DISABLE | _00_SCI_16_BASE_CLOCK | _00_SCI_NOISE_FILTER_DISABLE | 
-                     _00_SCI_BAUDRATE_SINGLE | _00_SCI_LOW_LEVEL_START_BIT;
+    SCI2.SEMR.BYTE = _00_SCI_BIT_MODULATION_DISABLE;
 
     /* Set bit rate */
-    SCI1.BRR = 0xC2U;
+    SCI2.BRR = 0x0EU;
 
-    /* Set RXD1 pin */
-    MPC.P30PFS.BYTE = 0x0AU;
-    PORT3.PMR.BYTE |= 0x01U;
+    /* Set SMISO2 pin */
+    MPC.P52PFS.BYTE = 0x0AU;
+    PORT5.PMR.BYTE |= 0x04U;
 
-    /* Set TXD1 pin */
-    MPC.P26PFS.BYTE = 0x0AU;
-    PORT2.PODR.BYTE |= 0x40U;
-    PORT2.PDR.BYTE |= 0x40U;
+    /* Set SMOSI2 pin */
+    MPC.P50PFS.BYTE = 0x0AU;
+    PORT5.PMR.BYTE |= 0x01U;
 
-    R_Config_SCI1_Create_UserInit();
+    /* Set SCK2 pin */
+    MPC.P51PFS.BYTE = 0x0AU;
+    PORT5.PMR.BYTE |= 0x02U;
+
+    R_Config_SCI2_Create_UserInit();
 }
 
 /***********************************************************************************************************************
-* Function Name: R_Config_SCI1_Start
-* Description  : This function starts the SCI1 channel
+* Function Name: R_Config_SCI2_Start
+* Description  : This function starts SCI2
 * Arguments    : None
 * Return Value : None
 ***********************************************************************************************************************/
 
-void R_Config_SCI1_Start(void)
+void R_Config_SCI2_Start(void)
 {
-    /* Clear interrupt flag */
-    IR(SCI1,TXI1) = 0U;
-    IR(SCI1,RXI1) = 0U;
+    /* Enable TXI and TEI interrupt */
+    IR(SCI2,TXI2) = 0U;
+    IEN(SCI2,TXI2) = 1U;
+    ICU.GENBL0.BIT.EN4 = 1U;
 
-    /* Enable SCI interrupt */
-    IEN(SCI1,TXI1) = 1U;
-    ICU.GENBL0.BIT.EN2 = 1U;
-    IEN(SCI1,RXI1) = 1U;
-    ICU.GENBL0.BIT.EN3 = 1U;
+    /* Enable RXI interrupt */
+    IR(SCI2,RXI2) = 0U;
+    IEN(SCI2,RXI2) = 1U;
+
+    /* Enable ERI interrupt */
+    ICU.GENBL0.BIT.EN5 = 1U;
 }
 
 /***********************************************************************************************************************
-* Function Name: R_Config_SCI1_Stop
-* Description  : This function stops the SCI1 channel
+* Function Name: R_Config_SCI2_Stop
+* Description  : This function stops SCI2
 * Arguments    : None
 * Return Value : None
 ***********************************************************************************************************************/
 
-void R_Config_SCI1_Stop(void)
+void R_Config_SCI2_Stop(void)
 {
-    /* Set TXD1 pin */
-    PORT2.PMR.BYTE &= 0xBFU;
+    /* Set SMOSI2 pin */
+    PORT5.PMR.BYTE &= 0xFEU;
 
-    /* Disable serial transmit */
-    SCI1.SCR.BIT.TE = 0U;
+    /* Disable serial transmit and receive */
+    SCI2.SCR.BYTE &= 0xCFU;
 
-    /* Disable serial receive */
-    SCI1.SCR.BIT.RE = 0U;
+    /* Disable TXI and TEI interrupt */
+    IEN(SCI2,TXI2) = 0U;
+    ICU.GENBL0.BIT.EN4 = 0U;
 
-    /* Disable SCI interrupt */
-    SCI1.SCR.BIT.TIE = 0U;
-    SCI1.SCR.BIT.RIE = 0U;
-    IEN(SCI1,TXI1) = 0U;
-    ICU.GENBL0.BIT.EN2 = 0U;
-    IR(SCI1,TXI1) = 0U;
-    IEN(SCI1,RXI1) = 0U;
-    ICU.GENBL0.BIT.EN3 = 0U;
-    IR(SCI1,RXI1) = 0U;
+    /* Disable RXI interrupt */
+    IEN(SCI2,RXI2) = 0U;
+
+    /* Disable ERI interrupt */
+    ICU.GENBL0.BIT.EN5 = 0U;
+
+    /* Clear interrupt flags */
+    IR(SCI2,TXI2) = 0U;
+    IR(SCI2,RXI2) = 0U;
 }
 
 /***********************************************************************************************************************
-* Function Name: R_Config_SCI1_Serial_Receive
-* Description  : This function receives SCI1 data
-* Arguments    : rx_buf -
-*                    receive buffer pointer (Not used when receive data handled by DMAC/DTC)
-*                rx_num -
-*                    buffer size (Not used when receive data handled by DMAC/DTC)
-* Return Value : status -
-*                    MD_OK or MD_ARGERROR
-***********************************************************************************************************************/
-
-MD_STATUS R_Config_SCI1_Serial_Receive(uint8_t * const rx_buf, uint16_t rx_num)
-{
-    MD_STATUS status = MD_OK;
-
-    if (1U > rx_num)
-    {
-        status = MD_ARGERROR;
-    }
-    else
-    {
-        g_sci1_rx_count = 0U;
-        g_sci1_rx_length = rx_num;
-        gp_sci1_rx_address = rx_buf;
-        SCI1.SCR.BIT.RIE = 1U;
-        SCI1.SCR.BIT.RE = 1U;
-    }
-
-    return (status);
-}
-
-/***********************************************************************************************************************
-* Function Name: R_Config_SCI1_Serial_Send
-* Description  : This function transmits SCI1 data
+* Function Name: R_Config_SCI2_SPI_Master_Send_Receive
+* Description  : This function sends and receives SCI2 data to and from slave device
 * Arguments    : tx_buf -
-*                    transfer buffer pointer (Not used when transmit data handled by DMAC/DTC)
+*                    transfer buffer pointer (not used when data is handled by DMAC/DTC)
 *                tx_num -
-*                    buffer size (Not used when transmit data handled by DMAC/DTC)
+*                    transfer buffer size
+*                rx_buf -
+*                    receive buffer pointer (not used when data is handled by DMAC/DTC)
+*                rx_num -
+*                    receive buffer size
 * Return Value : status -
 *                    MD_OK or MD_ARGERROR
 ***********************************************************************************************************************/
 
-MD_STATUS R_Config_SCI1_Serial_Send(uint8_t * const tx_buf, uint16_t tx_num)
+MD_STATUS R_Config_SCI2_SPI_Master_Send_Receive(uint8_t * const tx_buf, uint16_t tx_num, uint8_t * const rx_buf, uint16_t rx_num)
 {
     MD_STATUS status = MD_OK;
 
@@ -201,14 +179,17 @@ MD_STATUS R_Config_SCI1_Serial_Send(uint8_t * const tx_buf, uint16_t tx_num)
     }
     else
     {
-        gp_sci1_tx_address = tx_buf;
-        g_sci1_tx_count = tx_num;
+        g_sci2_tx_count = tx_num;
+        gp_sci2_tx_address = tx_buf;
+        gp_sci2_rx_address = rx_buf;
+        g_sci2_rx_count = 0U;
+        g_sci2_rx_length = rx_num;
 
-        /* Set TXD1 pin */
-        PORT2.PMR.BYTE |= 0x40U;
+        /* Set SMOSI2 pin */
+        PORT5.PMR.BYTE |= 0x01U;
 
-        SCI1.SCR.BIT.TIE = 1U;
-        SCI1.SCR.BIT.TE = 1U;
+        /* Set TE, TIE, RE, RIE bits simultaneously */
+        SCI2.SCR.BYTE |= 0xF0U;
     }
 
     return (status);

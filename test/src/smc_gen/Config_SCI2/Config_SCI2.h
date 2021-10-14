@@ -18,46 +18,46 @@
 ***********************************************************************************************************************/
 
 /***********************************************************************************************************************
-* File Name    : Config_MTU2_user.c
-* Version      : 2.1.1
+* File Name    : Config_SCI2.h
+* Version      : 1.9.3
 * Device(s)    : R5F571MFCxFP
-* Description  : This file implements device driver for Config_MTU2.
+* Description  : This file implements device driver for Config_SCI2.
 * Creation Date: 2021-09-09
 ***********************************************************************************************************************/
 
-/***********************************************************************************************************************
-Pragma directive
-***********************************************************************************************************************/
-/* Start user code for pragma. Do not edit comment generated here */
-/* End user code. Do not edit comment generated here */
+#ifndef CFG_Config_SCI2_H
+#define CFG_Config_SCI2_H
 
 /***********************************************************************************************************************
 Includes
 ***********************************************************************************************************************/
-#include "r_cg_macrodriver.h"
-#include "Config_MTU2.h"
-/* Start user code for include. Do not edit comment generated here */
-/* End user code. Do not edit comment generated here */
-#include "r_cg_userdefine.h"
+#include "r_cg_sci.h"
 
 /***********************************************************************************************************************
-Global variables and functions
+Macro definitions (Register bit)
 ***********************************************************************************************************************/
-/* Start user code for global. Do not edit comment generated here */
-/* End user code. Do not edit comment generated here */
 
 /***********************************************************************************************************************
-* Function Name: R_Config_MTU2_Create_UserInit
-* Description  : This function adds user code after initializing the MTU2 channel
-* Arguments    : None
-* Return Value : None
+Macro definitions
 ***********************************************************************************************************************/
 
-void R_Config_MTU2_Create_UserInit(void)
-{
-    /* Start user code for user init. Do not edit comment generated here */
-    /* End user code. Do not edit comment generated here */
-}
+/***********************************************************************************************************************
+Typedef definitions
+***********************************************************************************************************************/
 
-/* Start user code for adding. Do not edit comment generated here */
+/***********************************************************************************************************************
+Global functions
+***********************************************************************************************************************/
+void R_Config_SCI2_Create(void);
+void R_Config_SCI2_Create_UserInit(void);
+void R_Config_SCI2_Start(void);
+void R_Config_SCI2_Stop(void);
+MD_STATUS R_Config_SCI2_SPI_Master_Send_Receive(uint8_t * const tx_buf, uint16_t tx_num, uint8_t * const rx_buf, uint16_t rx_num);
+void r_Config_SCI2_transmitend_interrupt(void);
+void r_Config_SCI2_receiveerror_interrupt(void);
+static void r_Config_SCI2_callback_transmitend(void);
+static void r_Config_SCI2_callback_receiveend(void);
+static void r_Config_SCI2_callback_receiveerror(void);
+/* Start user code for function. Do not edit comment generated here */
 /* End user code. Do not edit comment generated here */
+#endif

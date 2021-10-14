@@ -38,6 +38,7 @@
           <Path>src\smc_gen\general\r_cg_mtu3.h</Path>
           <Path>src\smc_gen\general\r_cg_tpu.h</Path>
           <Path>src\smc_gen\general\r_cg_s12ad.h</Path>
+          <Path>src\smc_gen\general\r_cg_rspi.h</Path>
         </Category>
         <Category Name="r_bsp">
           <Path>src\smc_gen\r_bsp\platform.h</Path>
@@ -142,6 +143,11 @@
           <Path>src\smc_gen\Config_S12AD0\Config_S12AD0.h</Path>
           <Path>src\smc_gen\Config_S12AD0\Config_S12AD0_user.c</Path>
         </Category>
+        <Category Name="Config_SCI2">
+          <Path>src\smc_gen\Config_SCI2\Config_SCI2.c</Path>
+          <Path>src\smc_gen\Config_SCI2\Config_SCI2.h</Path>
+          <Path>src\smc_gen\Config_SCI2\Config_SCI2_user.c</Path>
+        </Category>
       </Category>
       <Path>test.h</Path>
       <Path>LCD.h</Path>
@@ -149,6 +155,10 @@
       <Path>LCD.c</Path>
       <Path>AD.c</Path>
       <Path>AD.h</Path>
+      <Path>SPI_icm20948.c</Path>
+      <Path>SPI_icm20948.h</Path>
+      <Path>motor.c</Path>
+      <Path>motor.h</Path>
     </Files>
     <DebugOptions>
       <DebugTool>Simulator</DebugTool>
@@ -166,6 +176,7 @@
           <Option>-fpu</Option>
           <Option>-dbl_size=8</Option>
           <Option>-lang=c99</Option>
+          <Option>-include=src\smc_gen\Config_SCI2</Option>
           <Option>-include=src\smc_gen\Config_S12AD0</Option>
           <Option>-include=src\smc_gen\Config_MTU2</Option>
           <Option>-include=i2c_lcd_38a\i2c_lcd_38a</Option>
@@ -262,8 +273,13 @@
           <Path>DefaultBuild\Config_S12AD0.obj</Path>
           <Path>DefaultBuild\Config_S12AD0_user.obj</Path>
           <Path>DefaultBuild\AD.obj</Path>
+          <Path>DefaultBuild\Config_SCI2.obj</Path>
+          <Path>DefaultBuild\Config_SCI2_user.obj</Path>
+          <Path>DefaultBuild\SPI_icm20948.obj</Path>
+          <Path>DefaultBuild\motor.obj</Path>
         </LinkOrder>
         <CommonOptions>
+          <IncludePathForC>src\smc_gen\Config_SCI2</IncludePathForC>
           <IncludePathForC>src\smc_gen\Config_S12AD0</IncludePathForC>
           <IncludePathForC>src\smc_gen\Config_MTU2</IncludePathForC>
           <IncludePathForC>i2c_lcd_38a\i2c_lcd_38a</IncludePathForC>
